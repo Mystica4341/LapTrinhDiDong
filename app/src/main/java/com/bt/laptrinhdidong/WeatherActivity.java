@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -26,6 +27,8 @@ public class WeatherActivity extends AppCompatActivity {
     ArrayList<Weather> arrayListWeather = new ArrayList<>();
 
     WeatherCustomAdapter customAdapter;
+
+    Button btnRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,22 @@ public class WeatherActivity extends AppCompatActivity {
                 AlertDialog alertDialog = createAlertDialog(position, customAdapter);
                 alertDialog.show();
                 return false;
+            }
+        });
+        btnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    arrayListWeather = readFileJson();
+                    customAdapter =
+                            new WeatherCustomAdapter(WeatherActivity.this,
+                                    R.layout.item_weather_layout, arrayListWeather);
+                    lvWeather.setAdapter(customAdapter);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }

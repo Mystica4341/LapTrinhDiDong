@@ -23,7 +23,14 @@
         <ListView
             android:id="@+id/lvWeather"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="550dp" />
+
+        <Button
+            android:id="@+id/btnRefresh"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Refresh" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
