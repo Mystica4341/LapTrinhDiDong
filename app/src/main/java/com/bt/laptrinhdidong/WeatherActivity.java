@@ -1,11 +1,14 @@
 package com.bt.laptrinhdidong;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -22,7 +25,7 @@ public class WeatherActivity extends AppCompatActivity {
 
     ArrayList<Weather> arrayListWeather = new ArrayList<>();
 
-    WeatherCustomAdapter weatherCustomAdapter;
+    WeatherCustomAdapter customAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,14 @@ public class WeatherActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        lvWeather.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog alertDialog = createAlertDialog(position, customAdapter);
+                alertDialog.show();
+                return false;
+            }
+        });
     }
 
     public ArrayList<Weather> readFileJson() throws IOException, JSONException {
@@ -86,5 +97,26 @@ public class WeatherActivity extends AppCompatActivity {
         }
 
         return arrayListWeather;
+    }
+
+    AlertDialog createAlertDialog(int position, ArrayAdapter<String> adapter)
+    {
+        AlertDialog.Builder builder= new AlertDialog.Builder(WeatherActivity.this);
+        builder.setTitle("Delete Item!");
+        builder.setMessage("Are you sure you want to delete this item?");
+        //Xử lý cho nút Yes
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        //Xử lý cho nút No
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        return builder.create();
     }
 }
