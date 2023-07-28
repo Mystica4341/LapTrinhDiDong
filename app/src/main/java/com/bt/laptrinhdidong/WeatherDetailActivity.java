@@ -34,7 +34,7 @@ public class WeatherDetailActivity extends AppCompatActivity {
     }
 
     private void addEvent(){
-        Intent intent = new Intent();
+        Intent intent = getIntent();
         String Place = intent.getStringExtra("Place");
         String WindSpeed = intent.getStringExtra("Wind");
         String Condition = intent.getStringExtra("Condition");
