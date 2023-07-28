@@ -40,19 +40,16 @@ public class WeatherDetailActivity extends AppCompatActivity {
         String Condition = intent.getStringExtra("Condition");
         String Temp = intent.getStringExtra("Temp");
         if (Condition == "Sunny") {
-            Img = "dsunny";
+            imgWeather.setImageResource(R.drawable.dsunny);
         } else if (Condition == "Cloudy"){
-            Img = "dcloudy";
+            imgWeather.setImageResource(R.drawable.dcloudy);
         } else if (Condition == "Rainy"){
-            Img = "drainy";
+            imgWeather.setImageResource(R.drawable.drainy);
         } else if (Condition == "Thunderstorm"){
-            Img = "dthunder";
+            imgWeather.setImageResource(R.drawable.dthunder);
         } else if (Condition == "Snowing"){
-            Img = "dsnowing";
+            imgWeather.setImageResource(R.drawable.dsunny);
         }
-        int image = getResources()
-                .getIdentifier(Img, "drawable", "com.bt.laptrinhdidong");
-        imgWeather.setImageResource(image);
         tvPlace.setText(Place);
         tvWindS.setText(WindSpeed);
         tvCondition.setText(Condition);
