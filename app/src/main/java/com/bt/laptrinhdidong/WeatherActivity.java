@@ -38,10 +38,10 @@ public class WeatherActivity extends AppCompatActivity {
     private void addEvent(){
         try {
             arrayListWeather = readFileJson();
-            WeatherCustomAdapter adapter =
+            customAdapter =
                     new WeatherCustomAdapter(WeatherActivity.this,
                             R.layout.item_weather_layout, arrayListWeather);
-            lvWeather.setAdapter(adapter);
+            lvWeather.setAdapter(customAdapter);
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (JSONException e) {
@@ -50,9 +50,8 @@ public class WeatherActivity extends AppCompatActivity {
         lvWeather.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-              Intent intent = new Intent(WeatherActivity.this, WeatherActivity.class);
+              Intent intent = new Intent(WeatherActivity.this, WeatherDetailActivity.class);
                 intent.putExtra("Place", arrayListWeather.get(position).getPlace());
-                intent.putExtra("Img", arrayListWeather.get(position).getImgWeather());
                 intent.putExtra("Condition", arrayListWeather.get(position).getWeather());
                 intent.putExtra("Wind", arrayListWeather.get(position).getWindSpeed());
                 intent.putExtra("Temp", arrayListWeather.get(position).getTemp());
@@ -108,6 +107,7 @@ public class WeatherActivity extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+
             }
         });
         //Xử lý cho nút No

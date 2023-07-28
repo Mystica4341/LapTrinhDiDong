@@ -13,7 +13,7 @@ public class WeatherDetailActivity extends AppCompatActivity {
 
     ImageView imgWeather;
     TextView tvPlace, tvTemp, tvWindS, tvCondition;
-
+    String Img;
     Button btnBack;
 
     @Override
@@ -39,8 +39,20 @@ public class WeatherDetailActivity extends AppCompatActivity {
         String WindSpeed = intent.getStringExtra("Wind");
         String Condition = intent.getStringExtra("Condition");
         String Temp = intent.getStringExtra("Temp");
-        int Img = intent.getIntExtra("Img", 0);
-        imgWeather.setImageResource(Img);
+        if (Condition == "Sunny") {
+            Img = "dsunny";
+        } else if (Condition == "Cloudy"){
+            Img = "dcloudy";
+        } else if (Condition == "Rainy"){
+            Img = "drainy";
+        } else if (Condition == "Thunderstorm"){
+            Img = "dthunder";
+        } else if (Condition == "Snowing"){
+            Img = "dsnowing";
+        }
+        int image = getResources()
+                .getIdentifier(Img, "drawable", "com.bt.laptrinhdidong");
+        imgWeather.setImageResource(image);
         tvPlace.setText(Place);
         tvWindS.setText(WindSpeed);
         tvCondition.setText(Condition);
