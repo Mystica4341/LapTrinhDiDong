@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:background="#1D43FF"
             android:textColor="@color/white"
-            android:textSize="12pt"
+            android:textSize="14pt"
             android:text="Dự báo thời tiết" />
 
         <ListView
