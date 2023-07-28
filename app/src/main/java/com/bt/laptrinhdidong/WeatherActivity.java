@@ -29,6 +29,7 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
         lvWeather = (ListView) findViewById(R.id.lvWeather);
+        addEvent();
     }
 
     private void addEvent(){
@@ -46,7 +47,13 @@ public class WeatherActivity extends AppCompatActivity {
         lvWeather.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(WeatherActivity.this,)
+              Intent intent = new Intent(WeatherActivity.this, WeatherActivity.class);
+                intent.putExtra("Place", arrayListWeather.get(position).getPlace());
+                intent.putExtra("Img", arrayListWeather.get(position).getImgWeather());
+                intent.putExtra("Condition", arrayListWeather.get(position).getWeather());
+                intent.putExtra("Wind", arrayListWeather.get(position).getWindSpeed());
+                intent.putExtra("Temp", arrayListWeather.get(position).getTemp());
+                startActivity(intent);
             }
         });
     }
@@ -69,8 +76,8 @@ public class WeatherActivity extends AppCompatActivity {
             weather.setImgWeather(image);
             String place = ob.getString("Place");
             weather.setPlace(place);
-            String weathers = ob.getString("Weather");
-            weather.setWeather(weathers);
+            String condition = ob.getString("Condition");
+            weather.setWeather(condition);
             String temp = ob.getString("Temperature");
             weather.setTemp(temp);
             String windSpeed = ob.getString("WindS");

@@ -1,36 +1,36 @@
 {
-  "Weather": [
+  "Condition": [
     {
       "Place": "Berlin",
-      "Weather": "Snowing",
+      "Condition": "Snowing",
       "Temperature": "0C",
       "WindS": "5km/h",
       "Img": "snowing"
     },
     {
       "Place": "London",
-      "Weather": "Rainy",
+      "Condition": "Rainy",
       "Temperature": "5C",
       "WindS": "2km/h",
       "Img": "rainy"
     },
     {
       "Place": "Paris",
-      "Weather": "Thunderstorm",
+      "Condition": "Thunderstorm",
       "Temperature": "23C",
       "WindS": "10km/h",
       "Img": "thunder"
     },
     {
       "Place": "New York",
-      "Weather": "Cloudy",
+      "Condition": "Cloudy",
       "Temperature": "18C",
       "WindS": "7km/h",
       "Img": "cloudy"
     },
     {
       "Place": "Sydney",
-      "Weather": "Sunny",
+      "Condition": "Sunny",
       "Temperature": "32C",
       "WindS": "8km/h",
       "Img": "sunny"
